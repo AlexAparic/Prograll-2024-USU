@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <ImageButton
+        android:id="@+id/imgProductos"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginRight="155dp"
+        android:src="@android:drawable/ic_menu_camera" />
+
+    <EditText
+        android:id="@+id/txtCodigo"
+        android:layout_marginTop="20dp"
+        android:hint="Codigo"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/imgProductos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/txtDescripcion"
+        android:layout_marginTop="20dp"
+        android:hint="Descripcion"
+        android:layout_below="@id/txtCodigo"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtMarca"
+        android:layout_marginTop="20dp"
+        android:hint="Marca"
+        android:layout_below="@id/txtDescripcion"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtPrecio"
+        android:layout_marginTop="20dp"
+        android:hint="Precio"
+        android:layout_below="@id/txtMarca"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/txtCosto"
+        android:layout_marginTop="20dp"
+        android:hint="Costo"
+        android:layout_below="@id/txtPrecio"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/txtStock"
+        android:layout_marginTop="20dp"
+        android:hint="Stock"
+        android:layout_below="@id/txtCosto"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/ganancias"
+        android:layout_marginTop="20dp"
+        android:hint="Ganancia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtStock"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+
+
+
+    <Button
+        android:id="@+id/btnGuardarProucto"
+        android:text="GUARDAR PRODUCTO"
+        android:layout_below="@id/txtStock"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRegresarListaProductos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@android:drawable/ic_menu_revert" />
+</RelativeLayout>
