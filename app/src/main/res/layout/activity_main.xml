@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#86DAD4D4"
+        android:backgroundTint="#86DAD4D4"
+        android:orientation="vertical">
+
+        <io.github.florent37.shapeofview.shapes.RoundRectView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:elevation="4dp"
+            app:shape_roundRect_borderColor="#86DAD4D4"
+            app:shape_roundRect_borderWidth="2dp"
+            app:shape_roundRect_bottomLeftRadius="10dp"
+            app:shape_roundRect_bottomRightRadius="10dp"
+
+            app:shape_roundRect_topLeftRadius="10dp"
+            app:shape_roundRect_topRightRadius="10dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#86DAD4D4"
+                android:backgroundTint="#86DAD4D4" />
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="189dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/instalogosinfondo" />
+
+
+        </io.github.florent37.shapeofview.shapes.RoundRectView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/email_24" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Correo electronico"
+                    android:background="#86DAD4D4"
+                    android:inputType="textEmailAddress" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/lock_24" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña"
+                    android:background="#86DAD4D4"
+                    android:inputType="textPassword" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnIniciarSesion"
+            android:layout_width="390dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/purple"
+            android:text="Iniciar Sesion"
+            android:layout_gravity="center"
+            android:textSize="25dp"/>
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnLoginGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No tienes cuenta?"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/txtRegistrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Registrate Aqui"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
