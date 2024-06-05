@@ -32,8 +32,8 @@ android {
     }
 }
 
-dependencies {
 
+dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.google.firebase:firebase-storage:21.0.0")
     implementation("id.zelory:compressor:2.1.0")
@@ -43,11 +43,17 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-auth:23.0.0")
-   implementation("com.google.firebase:firebase-firestore:25.0.0")
+    implementation("com.google.firebase:firebase-firestore:25.0.0")
     testImplementation("junit:junit:4.13.2")
-
+    implementation ("com.github.d-max:spots-dialog:1.1@aar")
+    implementation ("com.firebaseui:firebase-ui-firestore:8.0.2")
+    implementation ("com.github.smarteist:autoimageslider:1.3.7")
+    implementation ("com.google.firebase:firebase-messaging:24.0.0")
     implementation("com.google.android.gms:play-services-auth:21.1.1")
     implementation ("io.github.florent37:shapeofview:1.4.7")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation ("com.squareup.retrofit2:retrofit:2.4.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.4.0")
+    implementation ("com.squareup.retrofit2:converter-scalars:2.4.0")
 }

@@ -36,6 +36,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -204,30 +205,42 @@ SignInButton mButtonGoogle;
         return networkInfo != null && networkInfo.isConnected();
     }
 
-    private void login(){
+    private void login() {
         String email = mTextinputEmail.getText().toString();
         String password = mTextinputPassword.getText().toString();
 
-        // Verificar que los campos de texto no estén vacíos
-        if(email.isEmpty() || password.isEmpty()){
+        if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(MainActivity.this, "Por favor, ingresa un email y contraseña", Toast.LENGTH_LONG).show();
-            return; // Salir del método si alguno de los campos está vacío
+            return;
         }
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(MainActivity.this,"El email o la contraseña que ingresaste no son correctas", Toast.LENGTH_LONG).show();
+                    FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
+                    mFirestore.collection("Users")
+                            .whereEqualTo("email", email)
+                            .whereEqualTo("password", password)
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                    } else {
+                                        Toast.makeText(MainActivity.this, "El email o la contraseña que ingresaste no son correctas", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
                 }
             }
         });
-        Log.d("campo", "email: " + email);
-        Log.d("campo", "password: " + password);
     }
-
-
 }

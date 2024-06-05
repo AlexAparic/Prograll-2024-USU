@@ -13,12 +13,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.redsocial.MainActivity;
 import com.example.redsocial.PostActivity;
 import com.example.redsocial.R;
+import com.example.redsocial.adapters.PostsAdapter;
+import com.example.redsocial.models.Post;
 import com.example.redsocial.providers.AuthProvider;
+import com.example.redsocial.providers.PostProvider;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.Query;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +36,9 @@ public class HomeFragment extends Fragment {
     FloatingActionButton mFab;
     Toolbar mToolbar;
     AuthProvider mAuthProvider;
+    RecyclerView mRecyclerView;
+    PostProvider mPostProvider;
+    PostsAdapter mPostsAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -46,6 +56,13 @@ public class HomeFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Publicaciones");
         setHasOptionsMenu(true);
         mAuthProvider = new AuthProvider();
+        mPostProvider = new PostProvider();
+
+        mRecyclerView = mView.findViewById(R.id.recyclerViewHome);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+
 
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,10 +73,32 @@ public class HomeFragment extends Fragment {
         return mView;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        Query query = mPostProvider.getAll();
+        FirestoreRecyclerOptions<Post> options =
+                new FirestoreRecyclerOptions.Builder<Post>()
+                        .setQuery(query, Post.class)
+                        .build();
+        mPostsAdapter = new PostsAdapter(options, getContext());
+        mRecyclerView.setAdapter(mPostsAdapter);
+        mPostsAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mPostsAdapter.stopListening();
+    }
+
+
     private void goToPost() {
         Intent intent = new Intent(getContext(), PostActivity.class);
         startActivity(intent);
     }
+
+
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
