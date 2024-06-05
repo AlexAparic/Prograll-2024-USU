@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -15,6 +19,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RedSocial"
         tools:targetApi="31">
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FiltersActivity"
+            android:exported="false"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".UserProfileActivity"
+            android:exported="false"
+            android:parentActivityName=".PostDetailActivity" />
+        <activity
+            android:name=".PostDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".HomeActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.redsocial"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".CompleteProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
@@ -36,6 +69,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".services.MyFirebaseMessagingClient"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
     </application>
 
 </manifest>

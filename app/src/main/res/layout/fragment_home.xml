@@ -13,13 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="55dp">
+        android:layout_marginTop="60dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewHome"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     </LinearLayout>
 
